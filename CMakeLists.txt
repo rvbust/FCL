@@ -103,11 +103,13 @@ endif()
 option(FCL_USE_HOST_NATIVE_ARCH "Whether FCL should use cflags from the host used to compile" OFF)
 if (FCL_USE_HOST_NATIVE_ARCH)
   if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native -mavx2 -O3")
   else()
     message(WARNING "FCL_USE_HOST_NATIVE_ARCH is only supported in Linux. No effect.")
   endif()
 endif()
+
+
 
 # DEPRECATED: old cmake option. Not strictly correct from the semantic point of view
 # it was activating march=native, not only SSE

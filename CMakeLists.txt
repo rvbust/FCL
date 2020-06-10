@@ -108,8 +108,6 @@ if (FCL_USE_HOST_NATIVE_ARCH)
     message(WARNING "FCL_USE_HOST_NATIVE_ARCH is only supported in Linux. No effect.")
   endif()
 endif()
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native -mavx2 -O3")
-
 
 # DEPRECATED: old cmake option. Not strictly correct from the semantic point of view
 # it was activating march=native, not only SSE

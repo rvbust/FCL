@@ -101,12 +101,13 @@ endif()
 if(FCL_HAVE_OCTOMAP)
   # Use the IMPORTED target from newer versions of octomap-config.cmake if
   # available, otherwise fall back to OCTOMAP_INCLUDE_DIRS and OCTOMAP_LIBRARIES
-  if(TARGET octomap)
-    target_link_libraries(${PROJECT_NAME} PUBLIC octomap)
-  elseif(OCTOMAP_INCLUDE_DIRS AND OCTOMAP_LIBRARIES)
+  # if(TARGET octomap)
+  #   target_link_libraries(${PROJECT_NAME} PUBLIC octomap)
+  # elseif(OCTOMAP_INCLUDE_DIRS AND OCTOMAP_LIBRARIES)
     target_include_directories(${PROJECT_NAME} SYSTEM PUBLIC "${OCTOMAP_INCLUDE_DIRS}")
     target_link_libraries(${PROJECT_NAME} PUBLIC "${OCTOMAP_LIBRARIES}")
-  endif()
+  # endif()
+  # target_link_libraries(${PROJECT_NAME} PUBLIC octomap)
 endif()
 
 target_include_directories(${PROJECT_NAME} INTERFACE

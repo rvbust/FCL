@@ -82,7 +82,7 @@ include(FCLVersion)
 if(MSVC OR IS_ICPC)
   option(FCL_STATIC_LIBRARY "Whether the FCL library should be static rather than shared" ON)
 else()
-  option(FCL_STATIC_LIBRARY "Whether the FCL library should be static rather than shared" OFF)
+  option(FCL_STATIC_LIBRARY "Whether the FCL library should be static rather than shared" ON)
 endif()
 
 # Whether to enable SSE
@@ -335,8 +335,8 @@ configure_file(
   "${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules/cmake_uninstall.cmake.in"
   "${CMAKE_CURRENT_BINARY_DIR}/CMakeModules/cmake_uninstall.cmake"
   IMMEDIATE @ONLY)
-add_custom_target(uninstall
-  "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/CMakeModules/cmake_uninstall.cmake")
+# add_custom_target(uninstall
+#   "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/CMakeModules/cmake_uninstall.cmake")
 
 set(FCL_BUILD_TESTS "DEFAULT" CACHE INTERNAL "Deprecated; use BUILD_TESTING instead.")
 
@@ -383,13 +383,13 @@ if(DOXYGEN_FOUND)
                      WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/doc
                      DEPENDS ${DOXYGEN_DOXYFILE}
   )
-  add_custom_target(docs DEPENDS ${DOXYGEN_HTML_INDEX})
-  add_custom_target(docs_forced
-                    COMMAND ${CMAKE_COMMAND} -E echo_append "Building API Documentation..."
-                    COMMAND ${DOXYGEN_EXECUTABLE} -u ${DOXYGEN_DOXYFILE}
-                    COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_DOXYFILE}
-                    COMMAND ${CMAKE_COMMAND} -E echo "Done."
-                    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/doc
-  )
+  # add_custom_target(docs DEPENDS ${DOXYGEN_HTML_INDEX})
+  # add_custom_target(docs_forced
+  #                   COMMAND ${CMAKE_COMMAND} -E echo_append "Building API Documentation..."
+  #                   COMMAND ${DOXYGEN_EXECUTABLE} -u ${DOXYGEN_DOXYFILE}
+  #                   COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_DOXYFILE}
+  #                   COMMAND ${CMAKE_COMMAND} -E echo "Done."
+  #                   WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/doc
+  # )
 
 endif()
